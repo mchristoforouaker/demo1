@@ -1,0 +1,50 @@
+# Use postgres/example user/password credentials
+
+services:
+
+  db:
+    image: postgres:alpine
+    restart: always
+    ports:
+      - 5432:5432
+    # set shared memory limit when using docker compose
+    shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    #volumes:
+    #  - type: tmpfs
+    #    target: /dev/shm
+    #    tmpfs:
+    #      size: 134217728 # 128*2^20 bytes = 128Mbd
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: changeme
+
+  pgAdmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: marco@aker.com
+      PGADMIN_DEFAULT_PASSWORD: changeme
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.3.3
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://db:5432/postgres
+      KC_DB_USERNAME: postgres
+      KC_DB_PASSWORD: changeme
+      KC_HOSTNAME: localhost
+    command: start-dev
+    depends_on:
+      - db
