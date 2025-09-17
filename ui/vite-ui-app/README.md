@@ -67,3 +67,9 @@ export default tseslint.config([
   },
 ])
 ```
+
+# Running
+
+```sh
+npm run dev
+```
