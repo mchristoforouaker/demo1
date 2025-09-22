@@ -1,1 +1,10 @@
 # Quickstart
+
+useful links that is used
+
+https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
+
+https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/set-default-values-for-jobs
+
+https://github.com/actions/setup-node
+
