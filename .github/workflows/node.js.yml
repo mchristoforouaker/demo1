@@ -24,7 +24,7 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
-        cache-dependency-path: ui/vite-ui-app/package.json
+        cache-dependency-path: ui/vite-ui-app/
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     #- run: npm ci
