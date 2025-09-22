@@ -6,10 +6,10 @@ on:
 
 jobs:
   ui-api-build:
-    uses: ./.github/workflows/child/ui-api.yml
+    uses: ./child/ui-api.yml
 
   ui-app-build:
-    uses: ./.github/workflows/child/ui-app.yml
+    uses: ./child/ui-app.yml
 
   build:
     runs-on: ubuntu-latest
