@@ -12,11 +12,11 @@ jobs:
     - uses: actions/checkout@v4
     - run: ls -al
 
-  ui-api-build:
-    uses: ./child/ui-api.yml
+#  ui-api-build:
+#    uses: ./child/ui-api.yml
 
-  ui-app-build:
-    uses: ./child/ui-app.yml
+#  ui-app-build:
+#    uses: ./child/ui-app.yml
 
   deploy:
     runs-on: ubuntu-latest
