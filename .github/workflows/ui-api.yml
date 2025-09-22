@@ -6,6 +6,8 @@ name: UI API
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'ui/ui-api/**'
   pull_request:
     branches: [ "main" ]
 

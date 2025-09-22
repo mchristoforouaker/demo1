@@ -6,6 +6,8 @@ name: UI App
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'ui/vite-ui-app/**'
   pull_request:
     branches: [ "main" ]
 
