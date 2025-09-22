@@ -13,7 +13,7 @@ jobs:
     - run: ls -al
 
   ui-api-build:
-    uses: ./.github/workflows/child/ui-api.yml
+    uses: ./.github/workflows/ui-api.yml
 
 #  ui-app-build:
 #    uses: ./child/ui-app.yml
