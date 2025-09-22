@@ -20,7 +20,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: [ui-api-build, ui-app-build]
+#    needs: [ui-api-build, ui-app-build]
 
     steps:
     - uses: actions/checkout@v4
