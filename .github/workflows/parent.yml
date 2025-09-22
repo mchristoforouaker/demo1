@@ -1,17 +1,24 @@
-name: child1
+name: parent
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
+  checkout:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: ls -al
+
   ui-api-build:
-    uses: ./child/ui-api.yml
+    uses: ./.github/workflows/child/ui-api.yml
 
   ui-app-build:
-    uses: ./child/ui-app.yml
+    uses: ./.github/workflows/child/ui-app.yml
 
-  build:
+  deploy:
     runs-on: ubuntu-latest
     needs: [ui-api-build, ui-app-build]
 
