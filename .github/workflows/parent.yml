@@ -5,9 +5,11 @@ on:
     branches: [ "main" ]
 
 jobs:
-  
+
   ui-api-build:
     uses: ./.github/workflows/ui-api.yml
+    with:
+      file-path: 'ui/ui-api/**'
 
   ui-app-build:
     uses: ./.github/workflows/ui-app.yml
