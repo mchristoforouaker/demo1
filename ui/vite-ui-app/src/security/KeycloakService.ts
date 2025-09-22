@@ -18,12 +18,13 @@ const keycloakInstance = new Keycloak(
  *
  * @param onAuthenticatedCallback
  */
-const Login = (onAuthenticatedCallback: Function) => {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const Login = (onAuthenticatedCallback: () => any) => {
   keycloakInstance
     .init({ onLoad: "login-required", 
-    pkceMethod: 'S256' })
+            pkceMethod: 'S256' })
     .then(function (authenticated) {
-      authenticated ? onAuthenticatedCallback() : alert("non authenticated");
+        return (authenticated ? onAuthenticatedCallback() : alert("non authenticated"));
     })
     .catch((e) => {
       console.dir(e);
