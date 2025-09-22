@@ -4,12 +4,13 @@
 name: UI API
 
 on:
+  workflow_call:
 #  push:
 #    branches: [ "main" ]
 #    paths:
 #      - 'ui/ui-api/**'
-  pull_request:
-    branches: [ "main" ]
+#  pull_request:
+#    branches: [ "main" ]
 
 jobs:
   build:

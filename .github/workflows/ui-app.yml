@@ -4,12 +4,13 @@
 name: UI App
 
 on:
+  workflow_call:
 #  push:
 #    branches: [ "main" ]
 #    paths:
 #      - 'ui/vite-ui-app/**'
-  pull_request:
-    branches: [ "main" ]
+#  pull_request:
+#    branches: [ "main" ]
 
 jobs:
   build:
