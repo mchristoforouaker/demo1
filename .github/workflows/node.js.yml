@@ -16,7 +16,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ui/vite-ui-app
+        working-directory: ./ui/vite-ui-app
 
     strategy:
       matrix:
