@@ -8,3 +8,9 @@ https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows
 
 https://github.com/actions/setup-node
 
+## Features
+
+- Projects invoked CI only if change in that project
+- Project GitHub actions split between files
+
+
