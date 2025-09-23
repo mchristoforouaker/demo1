@@ -31,6 +31,7 @@ jobs:
   ui-api-job:
     needs: changes
     if: ${{ needs.changes.outputs.ui-api == 'true' }}
+    name: Build UI API
     uses: ./.github/workflows/ui-api.yml
 
 #  ui-api-job:
