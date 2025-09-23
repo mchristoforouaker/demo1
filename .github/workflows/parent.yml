@@ -16,6 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: ls -al
+    - run: ls -al .github/workflows
 
     # For pull requests it's not necessary to checkout the code
     - uses: dorny/paths-filter@v3
