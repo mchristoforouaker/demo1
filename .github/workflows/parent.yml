@@ -5,6 +5,22 @@ on:
     branches: [ "main" ]
 
 jobs:
+  init:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: ls -al
+    
+    # For pull requests it's not necessary to checkout the code
+    - uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          backend:
+            - 'backend/**'
+          frontend:
+            - 'frontend/**'
 
   ui-api-build:
     uses: ./.github/workflows/ui-api.yml
