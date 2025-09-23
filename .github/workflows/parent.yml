@@ -30,12 +30,12 @@ jobs:
 
   ui-api-job:
     needs: changes
-    if: ${{ needs.changes.outputs.ui-api == 'true' }}
+    if: ${{ needs.changes.outputs.ui-api == 'false' }}
     uses: ./.github/workflows/ui-api.yml
 
   ui-app-job:
     needs: changes
-    if: ${{ needs.changes.outputs.ui-app == 'true' }}
+    if: ${{ needs.changes.outputs.ui-app == 'false' }}
     uses: ./.github/workflows/ui-app.yml
     
 
