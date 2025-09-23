@@ -2,7 +2,7 @@ name: parent
 
 on:
   push:
-    branches: [ 'main', 'MC[0-9][0-9][0-9].*' ]
+    branches: [ 'main', 'MC[0-9][0-9][0-9]*' ]
 
 jobs:
   changes:
