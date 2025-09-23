@@ -13,6 +13,12 @@ on:
 #    branches: [ "main" ]
 
 jobs:
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: ls -al
+
   build:
 
     runs-on: ubuntu-latest
