@@ -10,7 +10,7 @@ jobs:
 
     # Set job outputs to values from filter step
     outputs:
-      ui-api: ${{ steps.filter.outputs.ui }}
+      ui-api: ${{ steps.filter.outputs.ui-api }}
       ui-app: ${{ steps.filter.outputs.ui-app }}
 
     steps:
