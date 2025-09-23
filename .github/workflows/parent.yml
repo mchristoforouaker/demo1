@@ -63,7 +63,8 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: [ui-api-job, ui-app-job]
+    needs: [ui-api-job]
+#    needs: [ui-api-job, ui-app-job]
 
     steps:
     - uses: actions/checkout@v4
