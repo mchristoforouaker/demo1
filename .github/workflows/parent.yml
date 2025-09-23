@@ -29,6 +29,7 @@ jobs:
             - 'ui/vite-ui-app/**'
 
   ui-api-job:
+    needs: changes
     uses: ./.github/workflows/ui-api.yml
 
 #  ui-api-job:
