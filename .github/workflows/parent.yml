@@ -20,7 +20,7 @@ jobs:
           ui-api:
             - 'ui/ui-api/**'
           ui-app:
-            - 'ui/ui-app/**'
+            - 'ui/vite-ui-app/**'
 
   ui-api-build:
     uses: ./.github/workflows/ui-api.yml
