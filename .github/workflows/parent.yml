@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Build UI API?
-        if: ${{ needs.changes.outputs.ui-api == 'true' }}
+        if: ${{ needs.changes.outputs.ui-api == 'false' }}
         uses: ./.github/workflows/ui-api.yml
 
       - name: Skip UI API build?
