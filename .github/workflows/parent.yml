@@ -29,15 +29,21 @@ jobs:
             - 'ui/vite-ui-app/**'
 
   ui-api-job:
-    runs-on: ubuntu-latest
     needs: changes
-    steps:
-      - uses: actions/checkout@v4
-      - run: ls -al
+    if: ${{ needs.changes.outputs.ui-api == 'true' }}
+    uses: ./.github/workflows/ui-api.yml
 
-      - name: Build UI API
-        if: ${{ needs.changes.outputs.ui-api == 'false' }}
-        uses: ./.github/workflows/ui-api.yml
+#  ui-api-job-skipped:
+#    if: ${{ needs.changes.outputs.ui-api == 'false' }}
+#    echo: "No changes in ui-api, skipping build"
+    
+
+#    uses: actions/checkout@v4
+#    run: ls -al
+
+#    name: Build UI API
+#    if: ${{ needs.changes.outputs.ui-api == 'false' }}
+#    uses: ./.github/workflows/ui-api.yml
 
 #  ui-api-job:
 #    runs-on: ubuntu-latest
