@@ -27,7 +27,7 @@ jobs:
           ui-app:
             - 'ui/vite-ui-app/**'
 
-  ui-api-build:
+  ui-api:
     runs-on: ubuntu-latest
     needs: changes
 
@@ -40,7 +40,7 @@ jobs:
         if: ${{ needs.changes.outputs.ui-api == 'false' }}
         run: echo "No changes in ui-api, skipping build"
 
-  ui-app-build:
+  ui-app:
     runs-on: ubuntu-latest
     needs: changes
 
