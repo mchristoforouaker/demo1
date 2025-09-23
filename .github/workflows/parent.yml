@@ -33,9 +33,10 @@ jobs:
     if: ${{ needs.changes.outputs.ui-api == 'true' }}
     uses: ./.github/workflows/ui-api.yml
 
-#  ui-api-job-skipped:
-#    if: ${{ needs.changes.outputs.ui-api == 'false' }}
-#    echo: "No changes in ui-api, skipping build"
+  ui-app-job:
+    needs: changes
+    if: ${{ needs.changes.outputs.ui-app == 'true' }}
+    uses: ./.github/workflows/ui-app.yml
     
 
 #    uses: actions/checkout@v4
