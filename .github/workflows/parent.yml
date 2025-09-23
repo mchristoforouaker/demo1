@@ -48,18 +48,18 @@ jobs:
 #        if: ${{ needs.changes.outputs.ui-api == 'false' }}
 #        run: echo "No changes in ui-api, skipping build"
 
-  ui-app-job:
-    runs-on: ubuntu-latest
-    needs: changes
+#  ui-app-job:
+#    runs-on: ubuntu-latest
+#    needs: changes
 
-    steps:
-      - name: Build UI API?
-        if: ${{ needs.changes.outputs.ui-app == 'true' }}
-        uses: ./.github/workflows/ui-app.yml
+#    steps:
+#      - name: Build UI API?
+#        if: ${{ needs.changes.outputs.ui-app == 'true' }}
+#        uses: ./.github/workflows/ui-app.yml
 
-      - name: Skip UI API build?
-        if: ${{ needs.changes.outputs.ui-app == 'false' }}
-        run: echo "No changes in ui-api, skipping build"
+#      - name: Skip UI API build?
+#        if: ${{ needs.changes.outputs.ui-app == 'false' }}
+#        run: echo "No changes in ui-api, skipping build"
 
   deploy:
     runs-on: ubuntu-latest
