@@ -8,6 +8,11 @@ jobs:
   changes:
     runs-on: ubuntu-latest
 
+    # Set job outputs to values from filter step
+    outputs:
+      ui-api: ${{ steps.filter.outputs.ui-api }}
+      frontend: ${{ steps.filter.outputs.ui-app }}
+
     steps:
     - uses: actions/checkout@v4
     - run: ls -al
