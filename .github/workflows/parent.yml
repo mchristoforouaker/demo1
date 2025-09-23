@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: ls -al
-    
+
     # For pull requests it's not necessary to checkout the code
     - uses: dorny/paths-filter@v3
       id: filter
@@ -24,8 +24,6 @@ jobs:
 
   ui-api-build:
     uses: ./.github/workflows/ui-api.yml
-    with:
-      file-path: 'ui/ui-api/**'
 
   ui-app-build:
     uses: ./.github/workflows/ui-app.yml
