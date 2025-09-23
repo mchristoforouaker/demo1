@@ -17,10 +17,10 @@ jobs:
       id: filter
       with:
         filters: |
-          backend:
-            - 'backend/**'
-          frontend:
-            - 'frontend/**'
+          ui-api:
+            - 'ui/ui-api/**'
+          ui-app:
+            - 'ui/ui-app/**'
 
   ui-api-build:
     uses: ./.github/workflows/ui-api.yml
