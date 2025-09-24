@@ -28,15 +28,16 @@ jobs:
           ui-app:
             - 'ui/vite-ui-app/**'
 
-  ui-api-job:
-    needs: changes
-    if: ${{ needs.changes.outputs.ui-api == 'false' }}
-    uses: ./.github/workflows/ui-api.yml
+# This works but I don't like the presentation.
+#  ui-api-job:
+#    needs: changes
+#    if: ${{ needs.changes.outputs.ui-api == 'false' }}
+#    uses: ./.github/workflows/ui-api.yml
 
-  ui-app-job:
-    needs: changes
-    if: ${{ needs.changes.outputs.ui-app == 'false' }}
-    uses: ./.github/workflows/ui-app.yml
+#  ui-app-job:
+#    needs: changes
+#    if: ${{ needs.changes.outputs.ui-app == 'false' }}
+#    uses: ./.github/workflows/ui-app.yml
     
 # The following does not work as intended, because calling workflows in steps is not supported.
 # You can only call composite actions.
