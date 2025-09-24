@@ -32,7 +32,7 @@ jobs:
       with:
         filters: |
           ui-api:
-            - 'ui/ui-api/src/**'
+            - 'ui/ui-api/**'
 
   build:
     needs: changes
