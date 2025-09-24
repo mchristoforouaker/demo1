@@ -38,7 +38,8 @@ jobs:
     if: ${{ needs.changes.outputs.ui-app == 'false' }}
     uses: ./.github/workflows/ui-app.yml
     
-
+# The following does not work as intended, because calling workflows in steps is not supported.
+# You can only call composite actions.
 #    uses: actions/checkout@v4
 #    run: ls -al
 
