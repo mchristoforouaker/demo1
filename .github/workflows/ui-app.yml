@@ -34,6 +34,7 @@ jobs:
             - 'ui/vite-ui-app/**'
 
   build:
+    needs: changes
     if: ${{ needs.changes.outputs.ui-app == 'true' }}
     runs-on: ubuntu-latest
     defaults:
@@ -60,6 +61,7 @@ jobs:
     #- run: npm test
 
   lint:
+    needs: changes
     if: ${{ needs.changes.outputs.ui-app == 'true' }}
     runs-on: ubuntu-latest
     defaults:
