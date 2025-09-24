@@ -19,7 +19,6 @@ jobs:
     # Set job outputs to values from filter step
     outputs:
       ui-api: ${{ steps.filter.outputs.ui-api }}
-      ui-app: ${{ steps.filter.outputs.ui-app }}
 
     steps:
     - uses: actions/checkout@v4
@@ -36,7 +35,7 @@ jobs:
 
   build:
     needs: changes
-    if: ${{ needs.changes.outputs.ui-api == 'false' }}
+    if: ${{ needs.changes.outputs.ui-api == 'true' }}
     runs-on: ubuntu-latest
     defaults:
       run:
