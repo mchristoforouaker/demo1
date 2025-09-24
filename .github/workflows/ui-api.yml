@@ -13,7 +13,30 @@ on:
 #    branches: [ "main" ]
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+
+    # Set job outputs to values from filter step
+    outputs:
+      ui-api: ${{ steps.filter.outputs.ui-api }}
+      ui-app: ${{ steps.filter.outputs.ui-app }}
+
+    steps:
+    - uses: actions/checkout@v4
+    - run: ls -al
+    - run: ls -al .github/workflows
+
+    # For pull requests it's not necessary to checkout the code
+    - uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          ui-api:
+            - 'ui/ui-api/**'
+
   build:
+    needs: changes
+    if: ${{ needs.changes.outputs.ui-api == 'false' }}
     runs-on: ubuntu-latest
     defaults:
       run:

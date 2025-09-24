@@ -28,8 +28,6 @@ jobs:
 #          ui-app:
 #            - 'ui/vite-ui-app/**'
 
-            # This works but I don't like the presentation.
-
   ui-api-job:
     uses: ./.github/workflows/ui-api.yml
 
