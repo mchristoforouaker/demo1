@@ -10,12 +10,13 @@ jobs:
     steps:
     - name: Git Checout
       uses: actions/checkout@v4
-      
+
     - name: "GitHub Variables"
       run: |
         echo "Starting parent workflow: ${{ github.workflow }}"
         echo "Starting parent workflow: ${{ github.sha }}"
         echo "The commit SHA is $(git rev-parse HEAD)"
+        echo "The commit SHA is $(git log -2 --pretty=format:\"%H\")"
 
 #  changes:
 #    runs-on: ubuntu-latest
