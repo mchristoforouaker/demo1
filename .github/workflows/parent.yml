@@ -8,6 +8,9 @@ jobs:
   init:
     runs-on: ubuntu-latest
     steps:
+    - name: Git Checout
+      uses: actions/checkout@v4
+      
     - name: "GitHub Variables"
       run: |
         echo "Starting parent workflow: ${{ github.workflow }}"
