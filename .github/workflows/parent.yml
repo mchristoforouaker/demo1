@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: "echo \"Starting parent workflow: ${{ github.workflow }}\""
+    - run: "Starting parent workflow: ${{ github.workflow }}"
 
 #  changes:
 #    runs-on: ubuntu-latest
