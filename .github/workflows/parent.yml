@@ -8,10 +8,11 @@ jobs:
   init:
     runs-on: ubuntu-latest
     steps:
-    - name: "workflow: ${{ github.workflow }}"
+    - name: "GitHub Variables"
       run: |
         echo "Starting parent workflow: ${{ github.workflow }}"
         echo "Starting parent workflow: ${{ github.sha }}"
+        echo "$GITHUB_CONTECT"
 
 #  changes:
 #    runs-on: ubuntu-latest
