@@ -12,7 +12,7 @@ jobs:
       run: |
         echo "Starting parent workflow: ${{ github.workflow }}"
         echo "Starting parent workflow: ${{ github.sha }}"
-        echo "$GITHUB_CONTEXT"
+        echo "The commit SHA is $(git rev-parse HEAD)"
 
 #  changes:
 #    runs-on: ubuntu-latest
