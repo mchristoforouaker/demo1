@@ -16,7 +16,7 @@ jobs:
         echo "Starting parent workflow: ${{ github.workflow }}"
         echo "Starting parent workflow: ${{ github.sha }}"
         echo "The commit SHA is $(git rev-parse HEAD)"
-        echo "The commit SHA is $(git --no-pager log -2 --pretty=format:\"%H\" | awk 'ORS=NR%3?\" \":\"\\n\"')"
+        echo The commit SHA is $(git --no-pager log -2 --pretty=format:"%H" | awk 'ORS=NR%3?" ":"\n"')
 
 #  changes:
 #    runs-on: ubuntu-latest
