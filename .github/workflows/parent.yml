@@ -10,8 +10,8 @@ jobs:
     steps:
     - name: "workflow: ${{ github.workflow }}"
       run: |
-        - "echo \"Starting parent workflow: ${{ github.workflow }}\"" 
-        - "echo \"Starting parent workflow: ${{ github.sha }}\""
+        echo "Starting parent workflow: ${{ github.workflow }}"
+        echo "Starting parent workflow: ${{ github.sha }}"
 
 #  changes:
 #    runs-on: ubuntu-latest
