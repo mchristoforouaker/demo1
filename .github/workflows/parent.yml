@@ -12,7 +12,7 @@ jobs:
       run: |
         echo "Starting parent workflow: ${{ github.workflow }}"
         echo "Starting parent workflow: ${{ github.sha }}"
-        echo "$GITHUB_CONTECT"
+        echo "$GITHUB_CONTEXT"
 
 #  changes:
 #    runs-on: ubuntu-latest
