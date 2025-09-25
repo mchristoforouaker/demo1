@@ -5,3 +5,6 @@ I break the code up to honour isolation of interests by having job workflows for
 GitHub Actions plugin shows nice feedback/UI in VSCode
 
 Branch matching DOES NOT use REGEX
+
+I note that the 'dorny/paths-filter@v3' only detects differences between main and branches. It does not detect changes between commits, which is what I'd like.
+
