@@ -18,6 +18,11 @@ jobs:
         echo "The commit SHA is $(git rev-parse HEAD)"
         echo The commit SHA is $(git --no-pager log -2 --pretty=format:"%H" | awk 'ORS=NR%3?" ":"\n"')
 
+  docker-build:
+    name: Docker Build
+    needs: init
+    runs-on: ubuntu-latest
+    steps:
     - name: Docker
       run: |
         ls -al
