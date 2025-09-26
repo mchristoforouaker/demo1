@@ -18,6 +18,14 @@ jobs:
         echo "The commit SHA is $(git rev-parse HEAD)"
         echo The commit SHA is $(git --no-pager log -2 --pretty=format:"%H" | awk 'ORS=NR%3?" ":"\n"')
 
+    - name: Docker Build UI App
+      run: |
+        ls -al
+        cd ./docker
+        docker --version
+        docker build --progress plain --no-cache -t ui-app-build -f ui-app-build.dockerfile ../ui/vite-ui-app
+        docker images
+
   docker-build:
     name: Docker Build
     needs: init
@@ -25,10 +33,7 @@ jobs:
     steps:
     - name: Docker
       run: |
-        ls -al
-        cd ./docker
-        docker --version
-        docker build --progress plain --no-cache -t ui-app-build -f ui-app-build.dockerfile ../ui/vite-ui-app
+        docker images
 
 #  changes:
 #    runs-on: ubuntu-latest
