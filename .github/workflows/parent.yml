@@ -8,7 +8,7 @@ jobs:
   init:
     runs-on: ubuntu-latest
     steps:
-    - name: Git Checout
+    - name: Git Checkout
       uses: actions/checkout@v4
 
     - name: "GitHub Variables"
@@ -17,7 +17,13 @@ jobs:
         echo "Starting parent workflow: ${{ github.sha }}"
         echo "The commit SHA is $(git rev-parse HEAD)"
         echo The commit SHA is $(git --no-pager log -2 --pretty=format:"%H" | awk 'ORS=NR%3?" ":"\n"')
+
+    - name: Docker
+      run: |
+        ls -al
+        cd ./docker
         docker --version
+        docker build --progress plain --no-cache -t ui-app-build -f ui-app-build.dockerfile ../ui/vite-ui-app
 
 #  changes:
 #    runs-on: ubuntu-latest
