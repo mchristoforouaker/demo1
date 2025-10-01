@@ -1,11 +1,9 @@
-FROM node:22-alpine
+FROM node:22-alpine AS build
 
 WORKDIR /app
-#COPY ../ui/vite-ui-app/ ./dist
+# NOTE: Context is ../ui/vite-ui-app
 COPY . .
 RUN ls -al
 RUN npm config set strict-ssl false
 RUN npm install && \
     npm run build
-#COPY ./dist ./dist
-#COPY ./package.json .
