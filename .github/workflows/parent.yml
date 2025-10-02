@@ -69,6 +69,7 @@ jobs:
 
   ui-app-job:
     uses: ./.github/workflows/ui-app.yml
+    secrets: inherit
 
 
 # This works but I don't like the presentation.
