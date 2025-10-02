@@ -21,6 +21,7 @@ jobs:
       ui-app: ${{ steps.filter.outputs.ui-app }}
 
     steps:
+    # Don't need full checkout here, only level 1
     - uses: actions/checkout@v4
     - run: ls -al
     - run: ls -al .github/workflows
@@ -32,51 +33,77 @@ jobs:
         filters: |
           ui-app:
             - 'ui/vite-ui-app/**'
-
-  build:
-    needs: changes
-    if: ${{ needs.changes.outputs.ui-app == 'true' }}
+  
+  containerise:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./ui/vite-ui-app
-
-    strategy:
-      matrix:
-        node-version: [22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        cache-dependency-path: '**/ui/vite-ui-app/package-lock.json'
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: ls -al
-    - run: npm ci
-    - run: npm run build --if-present
-    #- run: npm test
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-  lint:
-    needs: changes
-    if: ${{ needs.changes.outputs.ui-app == 'true' }}
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./ui/vite-ui-app
+    - name: Docker Login
+      run: |
+        echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        #docker logout
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        cache-dependency-path: '**/ui/vite-ui-app/package-lock.json'
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: ls -al
-    - run: npm ci
-    - run: npm run lint --if-present
+    - name: Docker Build UI App
+      run: |
+        ls -al
+        cd ./docker
+        docker --version
+        #        docker build --progress plain --no-cache -t ui-app-build -f ui-app-build.dockerfile ../ui/vite-ui-app
+        docker images
+
+    # - name: Build
+    #   uses: docker/build-push-action@v4
+    #   with:
+    #     context: ./ui/vite-ui-app
+    #     push: false
+    #     tags: my-ui-app:latest
+
+        # build:
+  #   needs: changes
+  #   # if: ${{ needs.changes.outputs.ui-app == 'true' }}
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       shell: bash
+  #       working-directory: ./ui/vite-ui-app
+
+  #   strategy:
+  #     matrix:
+  #       node-version: [22.x]
+  #       # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+  #   steps:
+  #   - uses: actions/checkout@v4
+  #   - name: Use Node.js ${{ matrix.node-version }}
+  #     uses: actions/setup-node@v4
+  #     with:
+  #       cache-dependency-path: '**/ui/vite-ui-app/package-lock.json'
+  #       node-version: ${{ matrix.node-version }}
+  #       cache: 'npm'
+  #   - run: ls -al
+  #   - run: npm ci
+  #   - run: npm run build --if-present
+  #   #- run: npm test
+
+  # lint:
+  #   needs: changes
+  #   if: ${{ needs.changes.outputs.ui-app == 'true' }}
+  #   runs-on: ubuntu-latest
+  #   defaults:
+  #     run:
+  #       shell: bash
+  #       working-directory: ./ui/vite-ui-app
+
+  #   steps:
+  #   - uses: actions/checkout@v4
+  #   - name: Use Node.js ${{ matrix.node-version }}
+  #     uses: actions/setup-node@v4
+  #     with:
+  #       cache-dependency-path: '**/ui/vite-ui-app/package-lock.json'
+  #       node-version: ${{ matrix.node-version }}
+  #       cache: 'npm'
+  #   - run: ls -al
+  #   - run: npm ci
+  #   - run: npm run lint --if-present

@@ -23,7 +23,7 @@ jobs:
         ls -al
         cd ./docker
         docker --version
-        docker build --progress plain --no-cache -t ui-app-build -f ui-app-build.dockerfile ../ui/vite-ui-app
+        #        docker build --progress plain --no-cache -t ui-app-build -f ui-app-build.dockerfile ../ui/vite-ui-app
         docker images
 
   docker-build:
@@ -61,8 +61,8 @@ jobs:
   # ui-api-job:
   #   uses: ./.github/workflows/ui-api.yml
 
-  # ui-app-job:
-  #   uses: ./.github/workflows/ui-app.yml
+  ui-app-job:
+    uses: ./.github/workflows/ui-app.yml
 
 
 # This works but I don't like the presentation.
