@@ -46,11 +46,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Docker Login
-      run: |
-        echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-        #docker logout
-
     - name: Build Base Image
       run: |
         ls -al
@@ -73,13 +68,15 @@ jobs:
         cd ./docker
         docker images
         # NOTE: Context is not important here as all files are in the image from the previous step
-        docker build --progress plain --no-cache -t ui-app-package -f ui-app-package.dockerfile .
+        docker build --progress plain --no-cache -t ui-app-runtime -f ui-app-package.dockerfile .
 
     - name: Push Image
       run: |
         docker images
+        echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
         docker image tag ui-app-runtime:latest ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/ui-app-runtime:${{github.run_number}}
         docker push ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/ui-app-runtime:${{github.run_number}}
+        #docker logout
 
     # - name: Build
     #   uses: docker/build-push-action@v4
