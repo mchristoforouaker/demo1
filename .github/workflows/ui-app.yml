@@ -47,7 +47,7 @@ jobs:
 
     - name: Build Base Image
       run: |
-        docker build -t ui-app-build -f .${{ vars.DOCKER_DIR }}ui-app-build.dockerfile ./ui/vite-ui-app
+        docker build -t ui-app-build -f ${{ vars.DOCKER_DIR }}ui-app-build.dockerfile ./ui/vite-ui-app
 
     - name: Build Packaged Image
       run: |
