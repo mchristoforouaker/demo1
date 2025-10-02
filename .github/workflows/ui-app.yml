@@ -75,6 +75,12 @@ jobs:
         # NOTE: Context is not important here as all files are in the image from the previous step
         docker build --progress plain --no-cache -t ui-app-package -f ui-app-package.dockerfile .
 
+    - name: Push Image
+      run: |
+        docker images
+        docker image tag ui-app-runtime:latest ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/ui-app-runtime:${{github.run_number}}
+        docker push ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/ui-app-runtime:${{github.run_number}}
+
     # - name: Build
     #   uses: docker/build-push-action@v4
     #   with:
