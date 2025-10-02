@@ -52,8 +52,7 @@ jobs:
 
     - name: Build Base Image
       run: |
-        cd ./docker
-        docker build -t ui-app-build -f ui-app-build.dockerfile ../ui/vite-ui-app
+        docker build -t ui-app-build -f ./docker/ui-app-build.dockerfile ./ui/vite-ui-app
 
     - name: Build Packaged Image
       run: |
