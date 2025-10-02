@@ -22,8 +22,8 @@ jobs:
       run: |
         echo PW ${{ secrets.DOCKERHUB_PASSWORD }}
         echo UN ${{ secrets.DOCKERHUB_USERNAME }}
-        echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-
+        echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        
     - name: Docker Build UI App
       run: |
         ls -al
