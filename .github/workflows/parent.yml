@@ -18,6 +18,12 @@ jobs:
         echo "The commit SHA is $(git rev-parse HEAD)"
         echo The commit SHA is $(git --no-pager log -2 --pretty=format:"%H" | awk 'ORS=NR%3?" ":"\n"')
 
+    - name: Docker Login
+      run: |
+        echo PW ${{ secrets.DOCKERHUB_PASSWORD }}
+        echo UN ${{ secrets.DOCKERHUB_USERNAME }}
+        echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
     - name: Docker Build UI App
       run: |
         ls -al
