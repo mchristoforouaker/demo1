@@ -18,28 +18,28 @@ jobs:
         echo "The commit SHA is $(git rev-parse HEAD)"
         echo The commit SHA is $(git --no-pager log -2 --pretty=format:"%H" | awk 'ORS=NR%3?" ":"\n"')
 
-    - name: Docker Login
-      run: |
-        echo PW ${{ secrets.DOCKERHUB_PASSWORD }}
-        echo UN ${{ secrets.DOCKERHUB_USERNAME }}
-        echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+    # - name: Docker Login
+    #   run: |
+    #     echo PW ${{ secrets.DOCKERHUB_PASSWORD }}
+    #     echo UN ${{ secrets.DOCKERHUB_USERNAME }}
+    #     echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
         
-    - name: Docker Build UI App
-      run: |
-        ls -al
-        cd ./docker
-        docker --version
-        #        docker build --progress plain --no-cache -t ui-app-build -f ui-app-build.dockerfile ../ui/vite-ui-app
-        docker images
+    # - name: Docker Build UI App
+    #   run: |
+    #     ls -al
+    #     cd ./docker
+    #     docker --version
+    #     #        docker build --progress plain --no-cache -t ui-app-build -f ui-app-build.dockerfile ../ui/vite-ui-app
+    #     docker images
 
-  docker-build:
-    name: Docker Build
-    needs: init
-    runs-on: ubuntu-latest
-    steps:
-    - name: Docker
-      run: |
-        docker images
+  # docker-build:
+  #   name: Docker Build
+  #   needs: init
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - name: Docker
+  #     run: |
+  #       docker images
 
 #  changes:
 #    runs-on: ubuntu-latest

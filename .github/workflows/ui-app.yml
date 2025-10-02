@@ -56,8 +56,16 @@ jobs:
         ls -al
         cd ./docker
         docker --version
-        #        docker build --progress plain --no-cache -t ui-app-build -f ui-app-build.dockerfile ../ui/vite-ui-app
+        docker build --progress plain --no-cache -t ui-app-build -f ui-app-build.dockerfile ../ui/vite-ui-app
         docker images
+
+    - name: Docker Build UI App
+      run: |
+        ls -al
+        cd ./docker
+        docker images
+        # NOTE: Context is not important here as all files are in the image from the previous step
+        docker build --progress plain --no-cache -t ui-app-package -f ui-app-package.dockerfile .
 
     # - name: Build
     #   uses: docker/build-push-action@v4

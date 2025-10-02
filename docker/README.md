@@ -23,6 +23,8 @@ NOTE: Keycloak needs to be running then you will see the keycloak login also pos
 ## Pushing to github registry
 
 ```sh
+docker login ghcr.io -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
 docker image tag ui-app-runtime:latest ghcr.io/mchristoforouaker/ui-app-runtime:1.0
 
 docker push ghcr.io/mchristoforouaker/ui-app-runtime:1.0
