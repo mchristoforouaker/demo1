@@ -39,7 +39,11 @@ jobs:
         filters: |
           ui-app:
             - 'ui/vite-ui-app/**'
-  
+
+    - name: Shoow vars
+      run: |
+        echo "UI App changed: ${{ vars.DOCKER_DIR }}"
+
   containerise:
     runs-on: ubuntu-latest
     steps:
@@ -76,7 +80,7 @@ jobs:
     #     push: false
     #     tags: my-ui-app:latest
 
-        # build:
+  # build:
   #   needs: changes
   #   # if: ${{ needs.changes.outputs.ui-app == 'true' }}
   #   runs-on: ubuntu-latest
