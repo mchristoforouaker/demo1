@@ -7,12 +7,19 @@ import { AppService } from './app.service';
 // Another test 3
 // Another test 4
 // Another test 5
-@Controller()
+@Controller('info')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
+  @Get('text')
   getHello(): string {
+//    return this.appService.getJSONHello();
     return this.appService.getHello();
+  }
+
+  @Get('json')
+  getHelloJSON(): string {
+    return this.appService.getJSONHello();
+//    return this.appService.getHello();
   }
 }
