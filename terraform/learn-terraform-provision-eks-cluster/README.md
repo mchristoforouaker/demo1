@@ -17,6 +17,7 @@ aws ecr get-login-password --region eu-west-2 --no-verify-ssl | docker login --u
 
 docker tag ui-app-runtime:latest 043505372635.dkr.ecr.eu-west-2.amazonaws.com/nsap/ui-app-runtime:latest
 
+docker push 043505372635.dkr.ecr.eu-west-2.amazonaws.com/nsap/ui-app-runtime:103
 
 ## Gotcha
 
