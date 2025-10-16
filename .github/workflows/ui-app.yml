@@ -70,10 +70,9 @@ jobs:
     - name: Push Image to ECR
       run: |
         docker images
-        docker image tag ui-app-runtime:latest ${{ secrets.AWS_ACCOUNT_NUMBER }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/nsap/ui-app-runtime:${{github.run_number}}
+        docker image tag ui-app-runtime:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/nsap/ui-app-runtime:${{github.run_number}}
         docker images
-    #    aws ecr get-login-password --region ${{ vars.AWS_REGION }} | docker login --username AWS --password-stdin ${{ vars.AWS_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com
-
+        aws ecr get-login-password --region ${{ secrets.AWS_REGION  }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com
     # - name: Build
     #   uses: docker/build-push-action@v4
     #   with:
