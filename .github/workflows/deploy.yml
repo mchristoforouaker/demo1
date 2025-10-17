@@ -14,9 +14,6 @@ on:
 #    branches: [ "main" ]
 
 jobs:
-
-
-
   containerise:
     runs-on: ubuntu-latest
     env:
@@ -31,7 +28,7 @@ jobs:
     - name: EKS Deploy Prep
       run: |
         # Let's set the env var so all kubectl commands know where the kubeconfig is
-        # export KUBECONFIG=$PWD/kubeconfig
+        # CAn we put REGION is a top level env variable?
         aws eks --region ${{ secrets.AWS_REGION }} update-kubeconfig --name ${{ secrets.EKS_CLUSTER_NAME }} --no-verify-ssl
         ls -al
         ls -al ${KUBECONFIG}
@@ -43,3 +40,7 @@ jobs:
         ls -al
         ls -al ${KUBECONFIG}
         kubectl get svc
+        # Want to do namespace based on ticket.
+        # Should use variables here to avoid repeating the ECR id
+        kubectl create deployment ui-app --image=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/nsap/ui-app-runtime:${{github.run_number}}
+        kubectl get deployments

@@ -9,10 +9,11 @@ Every time a new cluster is created you need to update the kubeconfig last this.
 aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name) --no-verify-ssl
 ```
 
-Obviously you call also eplace the dollar bits without interigating the terraform ooutput
+Obviously you call also eplace the dollar bits without interigating the terraform output
+NOTE: switched to ECR as github package repgistry cannot be accessed. Well it can but it's a faff
 
 ```sh
-kubectl create deployment kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1
+kubectl create deployment ui-app --image=043505372635.dkr.ecr.eu-west-2.amazonaws.com/nsap/ui-app-runtime:103
 ```
 
 
