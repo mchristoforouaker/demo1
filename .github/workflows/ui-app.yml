@@ -44,7 +44,7 @@ jobs:
     steps:
     - name: Update
       run: |
-        sudo apt-get update && sudo apt-get install -y docker.io
+        sudo apt-get update && sudo apt-get install -y
 
     - name: Checkout code
       uses: actions/checkout@v4
