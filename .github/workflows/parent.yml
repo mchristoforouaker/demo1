@@ -73,6 +73,7 @@ jobs:
     secrets: inherit
 
   deploy-job:
+    needs: ui-app-job
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
 
