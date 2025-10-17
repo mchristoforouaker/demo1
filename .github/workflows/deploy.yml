@@ -34,3 +34,4 @@ jobs:
     - name: Deploy to EKS
       run: |
         ls -al
+        echo "KUBECONFIG: ${KUBECONFIG}"
