@@ -47,17 +47,17 @@ jobs:
 
     - name: Build Base Image
       run: |
-        docker build -t ui-app-build -f ${{ vars.DOCKER_DIR }}ui-app-build.dockerfile ./ui/vite-ui-app
+        docker build --platform linux/amd64 -t ui-app-build -f ${{ vars.DOCKER_DIR }}ui-app-build.dockerfile ./ui/vite-ui-app
 
     - name: Build Packaged Image
       run: |
         # NOTE: Context is not important here as all files are in the image from the previous step
-        docker build -t ui-app-package -f ${{ vars.DOCKER_DIR }}ui-app-package.dockerfile .
+        docker build --platform linux/amd64 -t ui-app-package -f ${{ vars.DOCKER_DIR }}ui-app-package.dockerfile .
 
     - name: Build Runtime Image
       run: |
         # NOTE: Context is not important here as all files are in the image from the previous step
-        docker build -t ui-app-runtime -f ${{ vars.DOCKER_DIR }}ui-app-package.dockerfile .
+        docker build --platform linux/amd64 -t ui-app-runtime -f ${{ vars.DOCKER_DIR }}ui-app-package.dockerfile .
 
     - name: Push Image to GHCR
       run: |
