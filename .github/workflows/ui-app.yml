@@ -42,6 +42,10 @@ jobs:
   containerise:
     runs-on: 	ubuntu-latest
     steps:
+    - name: Update
+      run: |
+        sudo apt-get update && sudo apt-get install -y docker.io
+
     - name: Checkout code
       uses: actions/checkout@v4
 
