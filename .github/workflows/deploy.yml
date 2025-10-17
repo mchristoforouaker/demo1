@@ -15,8 +15,12 @@ on:
 
 jobs:
 
+
+
   containerise:
     runs-on: ubuntu-latest
+    env:
+      KUBECONFIG: ${{ github.workspace }}/kubeconfig
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -26,7 +30,7 @@ jobs:
         export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
         export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
         # Let's set the env var so all kubectl commands know where the kubeconfig is
-        export KUBECONFIG=$PWD/kubeconfig
+        # export KUBECONFIG=$PWD/kubeconfig
         aws eks --region ${{ secrets.AWS_REGION }} update-kubeconfig --name ${{ secrets.EKS_CLUSTER_NAME }} --no-verify-ssl
         ls -al
         kubectl get svc
