@@ -3,6 +3,14 @@
 This repo is a companion repo to the [Provision an EKS Cluster tutorial](https://developer.hashicorp.com/terraform/tutorials/kubernetes/eks), containing
 Terraform configuration files to provision an EKS cluster on AWS.
 
+Every time a new cluster is created you need to update the kubeconfig last this.
+
+```sh
+aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name) --no-verify-ssl
+```
+
+Obviously you call also eplace the dollar bits without interigating the terraform ooutput
+
 ```sh
 kubectl create deployment kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1
 ```
