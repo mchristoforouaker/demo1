@@ -68,9 +68,9 @@ jobs:
   # ui-api-job:
   #   uses: ./.github/workflows/ui-api.yml
 
-#  ui-app-job:
-#    uses: ./.github/workflows/ui-app.yml
-#    secrets: inherit
+  ui-app-job:
+    uses: ./.github/workflows/ui-app.yml
+    secrets: inherit
 
   deploy-job:
     uses: ./.github/workflows/deploy.yml
