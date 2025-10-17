@@ -45,7 +45,10 @@ jobs:
     - name: Update
       run: |
         sudo apt-get update && sudo apt-get install -y
-        sudo apt-get install docker.io
+        sudo apt-get remove containerd.io
+        sudo apt install docker.io docker-compose -y
+        systemctl start docker
+        sudo gpasswd -a $USER docker
         docker --version
 
     - name: Checkout code
