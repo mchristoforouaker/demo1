@@ -70,7 +70,7 @@ jobs:
 
     - name: Build Runtime Image 2
       run: |
-        docker build --no-cache -t ui-app-runtime -f ${{ vars.DOCKER_DIR }}ui-app.dockerfile ./ui/vite-ui-app        
+        docker build --no-cache --platform linux/arm64 -t ui-app-runtime -f ${{ vars.DOCKER_DIR }}ui-app.dockerfile ./ui/vite-ui-app        
 
     # - name: Push Image to GHCR
     #   run: |
