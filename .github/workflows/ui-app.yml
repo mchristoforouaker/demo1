@@ -42,14 +42,14 @@ jobs:
   containerise:
     runs-on: 	ubuntu-latest
     steps:
-    - name: Update
-      run: |
-        sudo apt-get update && sudo apt-get install -y
-        sudo apt-get remove containerd.io
-        sudo apt install docker.io docker-compose -y
-        sudo systemctl start docker
-        sudo gpasswd -a $USER docker
-        docker --version
+    # - name: Update
+    #   run: |
+    #     sudo apt-get update && sudo apt-get install -y
+    #     sudo apt-get remove containerd.io
+    #     sudo apt install docker.io docker-compose -y
+    #     sudo systemctl start docker
+    #     sudo gpasswd -a $USER docker
+    #     docker --version
 
     - name: Checkout code
       uses: actions/checkout@v4

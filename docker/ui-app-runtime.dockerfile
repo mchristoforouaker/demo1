@@ -8,4 +8,6 @@ RUN ls -al
 RUN npm config set strict-ssl false
 RUN npm i -g serve
 
-ENTRYPOINT ["serve", "-s",  "./dist", "-l", "5173"]
+RUN ls -al
+
+#ENTRYPOINT ["serve", "-s",  "./dist", "-l", "5173"]
