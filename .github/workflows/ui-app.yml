@@ -68,9 +68,9 @@ jobs:
         # NOTE: Context is not important here as all files are in the image from the previous step
         docker build --no-cache -t ui-app-runtime -f ${{ vars.DOCKER_DIR }}ui-app-runtime.dockerfile .
 
-    - name: Build Runtime Image 2
-      run: |
-        docker build --no-cache --platform linux/amd64 -t ui-app-runtime -f ${{ vars.DOCKER_DIR }}ui-app.dockerfile ./ui/vite-ui-app        
+    # - name: Build Runtime Image 2
+    #   run: |
+    #     docker build --no-cache --platform linux/amd64 -t ui-app-runtime -f ${{ vars.DOCKER_DIR }}ui-app.dockerfile ./ui/vite-ui-app        
 
     # - name: Push Image to GHCR
     #   run: |
