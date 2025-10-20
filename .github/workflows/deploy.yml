@@ -14,8 +14,8 @@ on:
 #    branches: [ "main" ]
 
 jobs:
-  containerise:
-    runs-on: ubuntu-latest
+  deployment:
+    runs-on: macos-latest
     env:
       KUBECONFIG: ${{ github.workspace }}/kubeconfig
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
