@@ -11,3 +11,4 @@ RUN npm i -g serve
 RUN ls -al
 
 #ENTRYPOINT ["serve", "-s",  "./dist", "-l", "5173"]
+ENTRYPOINT ["ls", "-al"]
