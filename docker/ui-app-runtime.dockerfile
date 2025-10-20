@@ -1,6 +1,6 @@
 FROM ui-app-package AS package
 
-FROM node:22-alpine AS runtime
+FROM --platform=linux/amd64 node:22-alpine AS runtime
 WORKDIR /app
 COPY --from=package /app .
 RUN ls -al
