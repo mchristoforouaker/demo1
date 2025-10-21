@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
-import KeyCloakService from './security/KeycloakService'
+//import KeyCloakService from './security/KeycloakService'
 
 const renderApp = function(){
   createRoot(document.getElementById('root')!).render(
@@ -12,4 +12,5 @@ const renderApp = function(){
   )
 };
 
-KeyCloakService.CallLogin(renderApp);
+//KeyCloakService.CallLogin(renderApp);
+renderApp();
