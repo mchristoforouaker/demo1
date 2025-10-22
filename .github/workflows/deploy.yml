@@ -34,7 +34,7 @@ jobs:
         ls -al ${KUBECONFIG}
         kubectl get svc
         kubectl delete --ignore-not-found deployment ui-app
-        kubectl delete --ignore-not-found sevice ui-app
+        kubectl delete --ignore-not-found service ui-app
 
     - name: Deploy to EKS
       run: |
