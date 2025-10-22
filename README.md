@@ -14,5 +14,8 @@ https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows
 
 - Projects invoked CI only if change in that project
 - Project GitHub actions split between files
+- terraform for EKS
+- Deploy UI application to EKS
 
 
+Look at the READMEs in the sub directories for more info

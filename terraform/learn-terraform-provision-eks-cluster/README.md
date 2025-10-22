@@ -82,3 +82,5 @@ kubectl events
 1s                    Normal    Created             Pod/ui-app-dd777897b-v99p9     Created container: ui-app-runtime
 1s                    Normal    Started             Pod/ui-app-dd777897b-v99p9     Started container ui-app-runtime
 ```
+
+
