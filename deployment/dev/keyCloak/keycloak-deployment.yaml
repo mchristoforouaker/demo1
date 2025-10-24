@@ -7,6 +7,8 @@ spec:
   selector:
     matchLabels:
       app: keycloak
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -36,5 +38,3 @@ spec:
           limits:
             memory: "1.5Gi"
             cpu: "500m"
-      strategy:
-        type: Recreate
