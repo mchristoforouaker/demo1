@@ -36,3 +36,5 @@ spec:
           limits:
             memory: "1.5Gi"
             cpu: "500m"
+    strategy:
+      type: Recreate
