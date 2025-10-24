@@ -46,5 +46,5 @@ jobs:
         # Should use variables here to avoid repeating the ECR id
         # kubectl create deployment ui-app --image=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/nsap/ui-app-runtime:${{github.run_number}}
         # kubectl get deployments
-        kubectl apply -k deployment/dev
+        kubectl apply -k deployment/dev/ui-app
         kubectl get svc
